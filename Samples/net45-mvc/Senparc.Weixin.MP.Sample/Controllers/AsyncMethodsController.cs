@@ -45,42 +45,32 @@ namespace Senparc.Weixin.MP.Sample.Controllers
         /// </summary>
         /// <param name="checkcode"></param>
         /// <returns></returns>
-        public async Task<ActionResult> TemplateMessageTest(string checkcode)
+        public async Task<ActionResult> TemplateMessageTest(
+            string openIds,
+            string templateId,
+            string url,
+            string first,
+            string keyword1,
+            string keyword2,
+            string keyword3,
+            string remark)
         {
-            var openId = CustomMessageHandler.TemplateMessageCollection.ContainsKey(checkcode)
-                ? CustomMessageHandler.TemplateMessageCollection[checkcode]
-                : null;
-
-            if (openId == null)
+            var testData = new
             {
-                return Content("验证码已过期或不存在！请在“盛派网络小助手”公众号输入“tm”获取验证码。");
-            }
-            else
+                first = new TemplateDataItem(first),
+                keyword1 = new TemplateDataItem(keyword1),
+                keyword2 = new TemplateDataItem(keyword2),
+                keyword3 = new TemplateDataItem(keyword3),
+                remark = new TemplateDataItem(remark)
+            };
+            var arr = openIds.Split(",".ToCharArray());
+            foreach (var openId in arr)
             {
-                CustomMessageHandler.TemplateMessageCollection.Remove(checkcode);
-
-
-                var templateId = "cCh2CTTJIbVZkcycDF08n96FP-oBwyMVrro8C2nfVo4";
-                var testData = new //TestTemplateData()
-                {
-                    first = new TemplateDataItem("【异步模板消息测试】"),
-                    keyword1 = new TemplateDataItem(openId),
-                    keyword2 = new TemplateDataItem("网页测试"),
-                    keyword3 = new TemplateDataItem(SystemTime.Now.LocalDateTime.ToString()),
-                    remark = new TemplateDataItem("更详细信息，请到Senparc.Weixin SDK官方网站（https://sdk.weixin.senparc.com）查看！\r\n\r\n这里我做了两个换行！\r\n\r\n点击详情可跳转到 BookHelper 小程序！")
-                };
-
-                var miniProgram = new TemplateModel_MiniProgram()
-                {
-                    appid = "wxfcb0a0031394a51c",//【盛派互动（BookHelper）】小程序
-                    pagepath = "pages/index/index"
-                };
-
-                var result = await TemplateApi.SendTemplateMessageAsync(appId, openId, templateId, null, testData, miniProgram);
-                return Content("异步模板消息已经发送到【盛派网络小助手】公众号，请查看。此前的验证码已失效，如需继续测试，请重新获取验证码。");
+                await TemplateApi.SendTemplateMessageAsync(appId, openId, templateId, url, testData);
             }
+
+            return Content("异步模板消息已经发送。");
         }
-
 
         #region 异步死锁测试
 

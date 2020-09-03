@@ -228,6 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <!-- DPBMARK MP -->
+    <Compile Include="Controllers\ApiProxyController.cs" />
     <Compile Include="Controllers\AsyncMethodsController.cs" />
     <Compile Include="Controllers\NeuChar\NeuCharAppController.cs" />
     <Compile Include="Controllers\WeixinJSSDKController.cs" />
