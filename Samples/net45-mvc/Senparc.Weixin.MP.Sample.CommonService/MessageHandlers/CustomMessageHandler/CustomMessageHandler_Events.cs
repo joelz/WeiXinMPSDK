@@ -51,6 +51,8 @@ namespace Senparc.Weixin.MP.Sample.CommonService.CustomMessageHandler
                 ? "-"
                 : string.Format("{0}.{1}.{2}", fileVersionInfo.FileMajorPart, fileVersionInfo.FileMinorPart, fileVersionInfo.FileBuildPart);
 
+            return "欢迎关注。点击 https://weixin.dc1979.com/oauth/index 开始测试。";
+
             return string.Format(
 @"欢迎关注【Senparc.Weixin 微信公众平台SDK】，当前运行版本：v{0}。
 您可以发送【文字】【位置】【图片】【语音】【文件】等不同类型的信息，查看不同格式的回复。

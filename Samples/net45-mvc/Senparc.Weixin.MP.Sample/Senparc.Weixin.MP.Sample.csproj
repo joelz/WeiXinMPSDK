@@ -231,6 +231,7 @@
     <Compile Include="Controllers\ApiProxyController.cs" />
     <Compile Include="Controllers\AsyncMethodsController.cs" />
     <Compile Include="Controllers\NeuChar\NeuCharAppController.cs" />
+    <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Controllers\WeixinJSSDKController.cs" />
     <Compile Include="Controllers\OAuth2Controller.cs" />
     <Compile Include="Controllers\WeixinAsyncController.cs" />
@@ -282,6 +283,20 @@
   <ItemGroup>
     <Content Include="App_Data\Document\Config.xml" />
     <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\azure-ad-spa\auth.all.js" />
+    <Content Include="Content\azure-ad-spa\authConfig.js" />
+    <Content Include="Content\azure-ad-spa\authPopup.js" />
+    <Content Include="Content\azure-ad-spa\authRedirect.js" />
+    <Content Include="Content\azure-ad-spa\graph.js" />
+    <Content Include="Content\azure-ad-spa\graphConfig.js" />
+    <Content Include="Content\azure-ad-spa\lib\bluebird.min.js" />
+    <Content Include="Content\azure-ad-spa\lib\bootstrap.min.css" />
+    <Content Include="Content\azure-ad-spa\lib\bootstrap.min.js" />
+    <Content Include="Content\azure-ad-spa\lib\jquery-3.1.0.js" />
+    <Content Include="Content\azure-ad-spa\lib\msal.js" />
+    <Content Include="Content\azure-ad-spa\lib\msal.min.js" />
+    <Content Include="Content\azure-ad-spa\lib\popper.min.js" />
+    <Content Include="Content\azure-ad-spa\ui.js" />
     <Content Include="Content\darktooltip.min.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\style.css" />
@@ -341,6 +356,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\azure-ad-spa\temp\2020-calendar.pdf" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\book-cover-front-small-3d-transparent.png" />
     <Content Include="Images\book-cover-front-small-3d.png" />
@@ -442,6 +459,9 @@
     <Content Include="Views\Cache\Test.cshtml" />
     <Content Include="Views\Document\Index.cshtml" />
     <Content Include="Views\Home\WeChatSampleBuilder.cshtml" />
+    <Content Include="Views\OAuth\Index.cshtml" />
+    <Content Include="Views\OAuth\UserInfoCallback.cshtml" />
+    <Content Include="Views\OAuth\SPA.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <!-- DPBMARK Open -->

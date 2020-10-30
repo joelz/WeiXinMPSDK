@@ -53,20 +53,53 @@
                         @using (Html.BeginForm("TemplateMessageTest", "AsyncMethods", FormMethod.Post))
                         {
                             <p>
-                                OpenId(多个OpenId用逗号分隔)：<input type="text" id="tm_openIds" name="openIds" value="o2dYAsz6UPlOYcBIsLUyf8Gl9Gpw,o2dYAs7n4PxjoXF5eWwD-6nvrhIA,o2dYAs4vZG0uP_pCmmUhu8tUw52s,o2dYAs--7lg4F5csulm7beUBBTME,o2dYAs6ZpXNqZs77QWozFA3StwVA" /><br />
-                                templateId：<input type="text" id="tm_templateId" name="templateId" value="D_PsZMDbWx3rTR0XrkESTlDKdYW78vUchFROST0MKqg" /><br />
-                                url：<input type="text" id="tm_url" name="url" value="https://cn.bing.com/" /><br />
-                                data.first：<input type="text" id="tm_data_first" name="first" value="first_data_here" /><br />
-                                data.keyword1：<input type="text" id="tm_data_keyword1" name="keyword1" value="keyword1" /><br />
-                                data.keyword2：<input type="text" id="tm_data_keyword2" name="keyword2" value="keyword2" /><br />
-                                data.keyword3：<input type="text" id="tm_data_keyword3" name="keyword3" value="keyword3" /><br />
-                                data.remark：<input type="text" id="tm_data_remark" name="remark" value="remark" /><br />
+                                OpenId(多个OpenId用逗号分隔)：<input type="text" id="tm_openIds" name="openIds" value="o2dYAs0HFlQ55Yg1CTtt1zNnGIU0,o2dYAsz6UPlOYcBIsLUyf8Gl9Gpw,o2dYAs4cWV_mPFtlLQhA5-qhK1PI" /><br />
+                                templateId：<input type="text" id="tm_templateId" name="templateId" value="kYIkkm9XcyJqmF5vGzh1t-RivVjZj-yMmNPMtI3ArWY" /><br />
+                                url：<input type="text" id="tm_url" name="url" value="https://kpltest.sharepoint.com/sites/ApplicationTeam/SitePages/%E6%96%B0%E5%A2%9E%E6%96%B0%E9%97%BB%E6%96%87%E7%AB%A0.aspx" /><br />
+                                data.first：<input type="text" id="tm_data_first" name="first" value="这是文章的标题" /><br />
+                                data.keyword1：<input type="text" id="tm_data_keyword1" name="keyword1" value="作者姓名" /><br />
+                                data.keyword2：<input type="text" id="tm_data_keyword2" name="keyword2" value="发布时间" /><br />
+                                data.keyword3：<input type="text" id="tm_data_keyword3" name="keyword3" value="这是内容，这是内容，这是内容，这是内容，这是内容，这是内容，这是内容，这是内容，这是内容，这是内容，这是内容，这是内容，这是内容，这是内容，这是内容" /><br />
+                                data.remark：<input type="text" id="tm_data_remark" name="remark" value="https://kpltest.sharepoint.com/sites/ApplicationTeam/SitePages/%E6%96%B0%E5%A2%9E%E6%96%B0%E9%97%BB%E6%96%87%E7%AB%A0.aspx" /><br />
                                 <br />
                                 <input type="submit" style="width:100px;" value="点击测试" class="ui-button" />
                             </p>
                         }
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                        @using (Html.BeginForm("UploadPic", "AsyncMethods", FormMethod.Post))
+                        {
+                            <p>
+                                <br />
+                                <input type="submit" style="width:100px;" value="上传图片" class="ui-button" />
+                            </p>
+                        }
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td>
+                        @using (Html.BeginForm("SendNews", "AsyncMethods", FormMethod.Post))
+                        {
+                        <p>
+                            OpenId(多个OpenId用逗号分隔)：<input type="text" id="tm_openIds" name="openIds" value="o2dYAs0HFlQ55Yg1CTtt1zNnGIU0,o2dYAsz6UPlOYcBIsLUyf8Gl9Gpw,o2dYAs4cWV_mPFtlLQhA5-qhK1PI" /><br />
+                            title：<input type="text" id="tm_templateId" name="title" value="这是文章的标题" /><br />
+                            author：<input type="text" id="tm_data_first" name="author" value="作者" /><br />
+                            url：<input type="text" id="tm_url" name="url" value="https://cn.bing.com/" /><br />
+                            desc：<input type="text" id="desc" name="desc" value="这是文章的摘要，这是文章的摘要，这是文章的摘要，这是文章的摘要，这是文章的摘要" /><br />
+                            <br />
+                            <input type="submit" style="width:100px;" value="点击测试" class="ui-button" />
+                        </p>
+                        }
+                    </td>
+                </tr>
+
+
             </tbody>
         </table>
     </div>

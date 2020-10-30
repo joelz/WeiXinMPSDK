@@ -1,0 +1,83 @@
+﻿@{
+    Layout = null;
+    string timestamp = DateTime.Now.Ticks.ToString();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Sharepoint-Wechat POC</title>
+
+    <!-- promise polyfill for IE 11 -->
+    <script src="~/Content/azure-ad-spa/lib/bluebird.min.js" class="pre"></script>
+
+    <!-- msal.js with a fallback to backup CDN -->
+    <script type="text/javascript" src="~/Content/azure-ad-spa/lib/msal.min.js"></script>
+
+    <!-- adding Bootstrap 4 for UI components  -->
+    <link rel="stylesheet" href="~/Content/azure-ad-spa/lib/bootstrap.min.css">
+    <script type="text/javascript">
+        var openId = '@ViewData["OpenId"]';
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="https://weixin.dc1979.com/oauth/index">Sharepoint-Wechat POC</a>
+        <div class="btn-group ml-auto dropleft">
+            <button type="button" id="btnSignIn" class="btn btn-secondary" onclick="signIn()">Sign In</button>
+            <button type="button" id="btnSignOut" class="btn btn-success d-none" onclick="signOut()">Sign Out</button>
+        </div>
+    </nav>
+    <br>
+    <h5 class="card-header text-center" id="info">Vanilla JavaScript SPA calling MS Graph API with MSAL.JS</h5>
+    <br>
+    <div class="row" style="margin:auto">
+        <div id="card-div" class="col-md-3 d-none">
+            <div class="card text-center">
+                <div class="card-body">
+                    <strong>Your wechat OpenId:</strong> @ViewData["OpenId"]
+                    <br />
+                    <br />
+                    <strong>Your O365 Email: </strong><span id="email"></span>
+                </div>
+            </div>
+        </div>
+        <br>
+       
+        <br>
+        <div class="col-md-4">
+            <div class="list-group" id="list-tab" role="tablist">
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="tab-content" id="nav-tabContent">
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- importing bootstrap.js and supporting js libraries -->
+    <script src="~/Content/azure-ad-spa/lib/jquery-3.1.0.js"></script>
+    <script src="~/Content/azure-ad-spa/lib/popper.min.js"></script>
+    <script src="~/Content/azure-ad-spa/lib/bootstrap.min.js"></script>
+
+    <!-- importing app scripts (load order is important) -->
+    <script type="text/javascript" src="~/Content/azure-ad-spa/authConfig.js?_=@timestamp"></script>
+    <script type="text/javascript" src="~/Content/azure-ad-spa/graphConfig.js?_=@timestamp"></script>
+    <script type="text/javascript" src="~/Content/azure-ad-spa/ui.js?_=@timestamp"></script>
+
+    <!-- use  authRedirect.js if you would like to only use the redirect flow -->
+    <!-- <script type="text/javascript" src="./authRedirect.js"></script>   -->
+    <!-- use  authPopup.js if you would like to only use the pop up flow -->
+    <!-- <script type="text/javascript" src="./authPopup.js"></script> -->
+
+    <script type="text/javascript" src="~/Content/azure-ad-spa/auth.all.js?_=@timestamp"></script>
+    <script type="text/javascript" src="~/Content/azure-ad-spa/graph.js"></script>
+</body>
+
+</html>

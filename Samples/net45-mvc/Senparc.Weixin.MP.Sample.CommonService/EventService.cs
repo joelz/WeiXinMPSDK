@@ -80,7 +80,7 @@ namespace Senparc.Weixin.MP.Sample.CommonService
 
                         var version = fileVersionInfo.FileVersion;
                         strongResponseMessage.Content = string.Format(
-                            "欢迎关注【Senparc.Weixin.MP 微信公众平台SDK】，当前运行版本：v{0}。\r\n您还可以发送【位置】【图片】【语音】信息，查看不同格式的回复。\r\nSDK官方地址：https://sdk.weixin.senparc.com",
+                            "欢迎关注。点击 https://weixin.dc1979.com/oauth/index 开始测试。",
                             version);
                         responseMessage = strongResponseMessage;
                         break;

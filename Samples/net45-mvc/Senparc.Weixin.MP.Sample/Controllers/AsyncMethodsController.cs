@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using Senparc.NeuChar.Entities;
 using Senparc.Weixin.MP.AdvancedAPIs;
+using Senparc.Weixin.MP.AdvancedAPIs.GroupMessage;
 using Senparc.Weixin.MP.AdvancedAPIs.TemplateMessage;
 using Senparc.Weixin.MP.Helpers;
 using Senparc.Weixin.MP.MvcExtension;
@@ -70,6 +72,66 @@ namespace Senparc.Weixin.MP.Sample.Controllers
             }
 
             return Content("异步模板消息已经发送。");
+        }
+
+
+        /// <summary>
+        /// 使用异步Action测试异步模板消息接口
+        /// </summary>
+        /// <param name="checkcode"></param>
+        /// <returns></returns>
+        public async Task<ActionResult> SendNews(
+            string openIds,
+            string title,
+            string author,
+            string url,
+            string desc)
+        {
+            //string thrumbMediaId = "8_cg03XSzRM4AwScm91SrMOd4tzNnPvtu8JLqOJuR0d_fyu_KnkKKrByVQKJm2lZ";
+            //NewsModel news = new NewsModel
+            //{
+            //    thumb_media_id = thrumbMediaId,
+            //    author = author,
+            //    title = title,
+            //    content_source_url = url,
+            //    digest = desc,
+            //};
+            //var result = await MediaApi.UploadTemporaryNewsAsync(appId, 10000, news);
+            ////  测试号不能群发消息了！！！
+            //var result2 = GroupMessageApi.SendGroupMessageByOpenId(appId, GroupMessageType.mpnews,
+            //    result.media_id, null, 10000, openIds.Split(",".ToCharArray()));
+
+
+            Article article = new Article()
+            {
+                Title = title,
+                Description = desc,
+                Url = url,
+                PicUrl = "https://share.dc1979.com/run/123.jpg"
+            };
+            var arr = openIds.Split(",".ToCharArray());
+            foreach (var openId in arr)
+            {
+                //只能用客服消息来发送图文消息
+                CustomApi.SendMpNews(appId, openId, "tXa-SMXKKx1djW3CgvVu3lUW57w2hqxIFzOgmj0jUBSBq4V-oGltLmgd-ui6Gg7k");
+                //只能发一篇article！！
+                //CustomApi.SendNews(appId, openId, new List<Article> { article });
+            }
+
+            return Content("图文消息已经发送。");
+        }
+
+        /// <summary>
+        /// 使用异步Action测试异步模板消息接口
+        /// </summary>
+        /// <param name="checkcode"></param>
+        /// <returns></returns>
+        public ContentResult UploadPic()
+        {
+            string file = @"D:\GitRepo\WeiXinMPSDK\Samples\net45-mvc\Senparc.Weixin.MP.Sample\Images\123.jpg";
+            var result = MediaApi.UploadTemporaryMedia(appId, UploadMediaFileType.image, file);
+
+            return Content(result.media_id + "（00）" + result.thumb_media_id);
         }
 
         #region 异步死锁测试
