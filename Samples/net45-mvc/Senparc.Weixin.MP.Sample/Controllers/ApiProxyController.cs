@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using RestSharp;
+using System.Web.Mvc;
 
 namespace Senparc.Weixin.MP.Sample.Controllers
 {
@@ -211,6 +212,22 @@ namespace Senparc.Weixin.MP.Sample.Controllers
         }";
 
             return Content(content, "application/json");
+        }
+
+        [HttpGet]
+        public ActionResult BaiduMapRevGeo(string lat, string lng)
+        {
+            var client = new RestClient("http://api.map.baidu.com");
+            var request = new RestRequest("reverse_geocoding/v3/", Method.GET);
+            //ak=&output=json&coordtype=wgs84ll&location=31.225696563611,121.49884033194
+            request.AddQueryParameter("ak", "aC5CqP6v6bjxVLcI3gyBE3gBkpxABbsd");
+            request.AddQueryParameter("output", "json");
+            request.AddQueryParameter("coordtype", "wgs84ll");
+            request.AddQueryParameter("location", lat + "," + lng);
+
+            IRestResponse response = client.Execute(request);
+
+            return Content(response.Content, "application/json");
         }
 
 
